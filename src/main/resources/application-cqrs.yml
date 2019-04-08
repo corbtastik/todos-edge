@@ -1,0 +1,45 @@
+todos:
+  query:
+    endpoint: http://localhost:8005
+  command:
+    endpoint: http://localhost:8001
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: todos_query_api
+        uri: ${todos.query.endpoint}
+        predicates:
+        - Method=GET
+        - Path=/todos/**
+        filters:
+        - SetResponseHeader=X-TODOS-CLOUD-GATEWAY-ROUTE-ID, todos_query_api
+        - RewritePath=/todos/(?<path>.*), /$\{path}
+      - id: todos_create_api
+        uri: ${todos.command.endpoint}
+        predicates:
+        - Method=POST
+        - Path=/todos/**
+        filters:
+        - SetResponseHeader=X-TODOS-CLOUD-GATEWAY-REQUEST-ID, todos_create_api
+        - RewritePath=/todos/(?<path>.*), /$\{path}
+      - id: todos_update_api
+        uri: ${todos.command.endpoint}
+        predicates:
+        - Method=PATCH
+        - Path=/todos/**
+        filters:
+        - SetResponseHeader=X-TODOS-CLOUD-GATEWAY-REQUEST-ID, todos_update_api
+        - RewritePath=/todos/(?<path>.*), /$\{path}
+      - id: todos_delete_api
+        uri: ${todos.command.endpoint}
+        predicates:
+        - Method=DELETE
+        - Path=/todos/**
+        filters:
+        - SetResponseHeader=X-TODOS-CLOUD-GATEWAY-REQUEST-ID, todos_delete_api
+        - RewritePath=/todos/(?<path>.*), /$\{path}
+      - id: todos_ui_root
+        uri: ${todos.ui.endpoint}
+        predicates:
+        - Path=/**

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: todos-cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+    config:
+      uri: ${CONFIG_SERVER_URI:http://localhost:8888}

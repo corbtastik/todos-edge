@@ -1,0 +1,52 @@
+todos:
+  api:
+    endpoint: http://localhost:8080
+  ui:
+    endpoint: http://localhost:4040
+spring:
+  application:
+    name: todos-cloud-gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          uaa:
+            client-id:  ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            client-authentication-method: ${CLIENT_AUTHENTICATION_METHOD}
+            authorization-grant-type: ${AUTHORIZATION_GRANT_TYPE}
+            redirect-uri-template: ${REDIRECT_URI_TEMPLATE}
+            scope: ${SCOPE}
+            client-name: ${CLIENT_NAME}
+        provider:
+          uaa:
+            authorization-uri: ${AUTHORIZATION_URI}
+            token-uri: ${TOKEN_URI}
+            user-info-uri: ${USER_INFO_URI}
+            user-name-attribute: ${USER_NAME_ATTRIBUTE}
+            jwk-set-uri: ${JWK_SET_URI}
+  cloud:
+    gateway:
+      routes:
+      - id: todos_all_api
+        uri: ${todos.api.endpoint}
+        predicates:
+        - Path=/todos/**
+        filters:
+        - SetResponseHeader=X-TODOS-CLOUD-GATEWAY-ROUTE-ID, todos_all_api
+        - RewritePath=/todos/(?<path>.*), /$\{path}
+      - id: todos_ui_root
+        uri: ${todos.ui.endpoint}
+        predicates:
+        - Path=/**
+
+server:
+  port: 9999
+management:
+  endpoints:
+    web:
+      base-path: /ops
+      exposure:
+        include: '*'
+
+
