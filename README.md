@@ -17,7 +17,7 @@ First clone and run the [UI](https://github.com/corbtastik/todos-webui) and [API
 1. cd into project
 1. mvnw clean package
 1. modify `manifest.yml` for your cloudfoundry tastes (custom route perhaps?)
-1. configure `todos.api.endpoint` and `todos.ui.endpoint` in `manifest.yml`
+1. configure `todos.api.endpoint` and `todos.ui.endpoint` in `manifest.yml`, note PCF will hydrate the container with the envars and Spring Boot will apply to exposed properties where the naming conventions match (snake_case to property.case).
     ```yaml
     ---
     applications:
