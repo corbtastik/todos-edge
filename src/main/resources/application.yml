@@ -20,8 +20,6 @@ spring:
         uri: ${todos.ui.endpoint}
         predicates:
         - Path=/**
-  main:
-    allow-bean-definition-overriding: true
 server:
   port: 9999
 management:

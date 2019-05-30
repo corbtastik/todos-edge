@@ -9,5 +9,3 @@ applications:
   env:
     TODOS_UI_ENDPOINT: https://todos-webui.apps.retro.io
     TODOS_API_ENDPOINT: https://todos-api.apps.retro.io
-    EUREKA_CLIENT_ENABLED: false
-    SPRING_CLOUD_CONFIG_ENABLED: false
