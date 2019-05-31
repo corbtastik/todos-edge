@@ -7,7 +7,4 @@ applications:
   - route: todos.apps.retro.io  
   path: target/todos-edge-1.0.0.SNAP.jar
   env:
-    TODOS_UI_ENDPOINT: https://todos-webui.apps.retro.io
-    TODOS_API_ENDPOINT: https://todos-api.apps.retro.io
-    EUREKA_CLIENT_ENABLED: false
-    SPRING_CLOUD_CONFIG_ENABLED: false
+    TRUST_CERTS: api.sys.retro.io
