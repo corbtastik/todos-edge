@@ -15,7 +15,7 @@ First clone and run the [UI](https://github.com/corbtastik/todos-webui) and [API
 
 1. Consider forking [this project](https://github.com/corbtastik/todos-edge) then clone to dev machine
 1. cd into project
-1. mvnw clean package
+1. ``mvnw clean package``
 1. modify `manifest.yml` for your cloudfoundry tastes (custom route perhaps?)
 1. Configure `todos.api.endpoint` and `todos.ui.endpoint` in `manifest.yml`, note PCF will hydrate the container with the envars and Spring Boot will apply to exposed properties where the naming conventions match (snake_case to property.case).
     ```yaml
@@ -32,7 +32,7 @@ First clone and run the [UI](https://github.com/corbtastik/todos-webui) and [API
         TODOS_API_ENDPOINT: https://todos-api.apps.retro.io
     ```
 1. login to PCF (or [PWS](https://run.pivotal.io/))
-1. cf push (awwwweee yeah)
+1. ``cf push`` (awwwweee yeah)
 
 Once the app is running access with the route provided in the manifest.  If the UI and API are configured you should see the api enabled app.
 
@@ -69,7 +69,7 @@ Push the Edge, API and UI with the ``manifest-internal.yml`` from each project a
     todos-edge   todos-webui   tcp        8080    
     ```
 1. login to PCF (or [PWS](https://run.pivotal.io/))
-1. cf push (awwwweee yeah)
+1. ``cf push -f manifest-internal.yml`` (awwwweee yeah)
 
 **UI running**
 
