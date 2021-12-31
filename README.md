@@ -71,12 +71,6 @@ Push the Edge, API and UI with the ``manifest-internal.yml`` from each project a
 1. login to PCF (or [PWS](https://run.pivotal.io/))
 1. ``cf push -f manifest-internal.yml`` (awwwweee yeah)
 
-**UI running**
-
-<p align="center">
-    <img src="https://github.com/corbtastik/todos-images/raw/master/todos-webui/ui.png" width="640">
-</p>
-
 ## Local
 
 You can clone, build, run then access ``localhost:9999`` or change the port.  But first clone and run the [UI](https://github.com/corbtastik/todos-webui) and [API](https://github.com/corbtastik/todos-api).
