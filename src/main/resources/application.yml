@@ -1,8 +1,8 @@
 todos:
   api:
-    endpoint: http://localhost:8080
+    endpoint: http://localhost:8081
   ui:
-    endpoint: http://localhost:4040
+    endpoint: http://localhost:8080
 spring:
   application:
     name: todos-edge
@@ -21,7 +21,7 @@ spring:
         predicates:
         - Path=/**
 server:
-  port: 9999
+  port: 8000
 management:
   endpoints:
     web:
